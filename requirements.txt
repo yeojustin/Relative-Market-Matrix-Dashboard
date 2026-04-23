@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+plotly
+altair
+requests
+yfinance
+jupyter
+nbformat>=4.2.0

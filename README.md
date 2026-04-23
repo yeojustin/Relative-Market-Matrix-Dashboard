@@ -1,22 +1,57 @@
-# Decentralized Feedback Wall + Live Crypto Feed (IPFS + ENS + MetaMask)
+# Relative Market Matrix
 
-Features:
-- Upload feedback (text + optional file) to IPFS via web3.storage
-- Provenance: user signs message with MetaMask (personal_sign) before upload; signature stored in `meta.json`
-- Live crypto feed from CoinGecko (free public API)
-- Snapshot current feed to IPFS (web3.storage) and get CID + gateway link
-- ENS resolve (address + contenthash) via ethers.js
+Interactive Streamlit dashboard for cross-asset relative performance analysis.  
+Build a custom symbol set (crypto, indices, equities, futures, FX), choose a benchmark, and compare each asset against either that benchmark or the peer-group average. This project is inspired by and credits the Streamlit stock peer analysis demo: [streamlit/demo-stockpeers](https://github.com/streamlit/demo-stockpeers)
 
-## Setup (exact steps)
-1. Clone this repo / copy files locally.
+## Preview
+![Dashboard overview](assets/dashboard1.png)
+![Dashboard detail view](assets/dashboard2.png)
 
-2. Create `js/config.js` from `js/config.example.js`:
-   - `WEB3_STORAGE_TOKEN`: get it at https://web3.storage/ → Account → Create API Token. :contentReference[oaicite:4]{index=4}
-   - `ETHEREUM_RPC_KEY` (optional): create free key at Alchemy or Infura if you want more reliable ENS lookups. If blank, ethers.getDefaultProvider is used. :contentReference[oaicite:5]{index=5}
+## Key Features
 
-   **Example `js/config.js`**:
-   ```js
-   export default {
-     WEB3_STORAGE_TOKEN: 'YOUR_TOKEN_HERE',
-     ETHEREUM_RPC_KEY: ''
-   }
+- Flexible ticker input with presets and custom symbols (`yfinance` compatible)
+- Relative performance modes:
+  - `Benchmark` mode (each asset vs chosen benchmark)
+  - `Group average` mode (each asset vs peer average excluding itself)
+- High-contrast terminal-style UI
+- Main normalized trend chart with highlighted benchmark
+- Per-asset pair cards:
+  - asset vs reference line chart
+  - spread/delta area chart
+- Summary metrics:
+  - best/worst vs reference
+  - best/worst absolute performance
+- Ratios panel with compact and extended views:
+  - valuation, leverage, margins, liquidity, and cash-flow metrics
+
+## Run Locally
+
+```bash
+uv venv
+source .venv/bin/activate
+uv sync
+uv run streamlit run streamlit_app.py
+```
+
+Open the local URL printed by Streamlit.
+
+## Usage Walkthrough
+
+Example: compare crypto + equity + index against BTC.
+
+1. In `Assets`, select `ETH-USD`, `AAPL`, and `^GSPC`.
+2. Set `Time period` to `1 Year`.
+3. Set `Benchmark` to `Bitcoin (BTC-USD)`.
+4. Choose `Comparison method`:
+   - `Benchmark` for direct BTC-relative comparison, or
+   - `Group average (excluding current asset)` for peer-relative comparison.
+5. Read results in order:
+   - KPI cards (`Best/Worst vs benchmark`, `Best/Worst absolute`)
+   - `Trend Canvas` (normalized performance lines)
+   - `Asset Detail` cards (line + spread per asset)
+   - Ranking table (`Return vs ...`)
+   - `Ratios` and `Price Data` tables for deeper context.
+
+## Data Source
+
+- Market prices and fundamentals from Yahoo Finance via `yfinance`

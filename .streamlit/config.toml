@@ -1,0 +1,15 @@
+[theme]
+base = "dark"
+textColor = "#f5faff"
+primaryColor = "#3b82f6"
+backgroundColor = "#000000"
+secondaryBackgroundColor = "#000000"
+showWidgetBorder = true
+borderColor = "#1f4d8a"
+dataframeHeaderBackgroundColor = "#061225"
+font = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+baseFontWeight = 400
+baseFontSize = 13
+headingFont = "JetBrains Mono"
+headingFontWeights = [500, 500, 500, 500, 500, 500]
+headingFontSizes = ["2.5rem", "1.5rem", "1rem"]
