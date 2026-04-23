@@ -3,6 +3,9 @@
 Interactive Streamlit dashboard for cross-asset relative performance analysis.  
 Build a custom symbol set (crypto, indices, equities, futures, FX), choose a benchmark, and compare each asset against either that benchmark or the peer-group average. This project is inspired by and credits the Streamlit stock peer analysis demo: [streamlit/demo-stockpeers](https://github.com/streamlit/demo-stockpeers)
 
+## Deployed app on streamlit, check it out!
+https://relative-market-matrix-dashboard-demo.streamlit.app/
+
 ## Preview
 ![Dashboard overview](assets/dashboard1.png)
 ![Dashboard detail view](assets/dashboard2.png)
@@ -24,7 +27,7 @@ Build a custom symbol set (crypto, indices, equities, futures, FX), choose a ben
 - Ratios panel with compact and extended views:
   - valuation, leverage, margins, liquidity, and cash-flow metrics
 
-## Run Locally
+## Run Locally on any machine 
 
 ```bash
 uv venv
