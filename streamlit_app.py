@@ -340,6 +340,11 @@ if "BTC-USD" not in data.columns:
 
 # Fill non-trading gaps (e.g., stocks/index weekends) so lines render continuously.
 data = data.sort_index().ffill().dropna(how="any")
+if data.empty:
+    st.warning(
+        "No overlapping price history after alignment. Try fewer symbols or another time period."
+    )
+    st.stop()
 
 normalized = data.div(data.iloc[0])
 normalized.columns = [SYMBOL_TO_LABEL.get(c, c) for c in normalized.columns]
