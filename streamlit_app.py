@@ -305,7 +305,7 @@ with left_top:
     horizon = st.pills(
         "Time period",
         options=list(HORIZON_MAP.keys()),
-        default="6 Months",
+        default="5 Years",
         help="How much history to load and compare.",
     )
 
